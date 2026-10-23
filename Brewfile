@@ -1,0 +1,11 @@
+# Shell and tools used by the prompt, ls alias, and fzf plugin.
+brew "fish"
+brew "git"
+brew "curl"
+brew "starship"
+brew "eza"
+brew "fzf"
+brew "fd"
+brew "bat"
+brew "micro"
+brew "worktrunk"
