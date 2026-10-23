@@ -26,6 +26,9 @@ if [ -e "$fish_dir" ]; then cp -RL "$fish_dir" "$backup_dir/fish"; fi
 if [ -e "$config_root/starship.toml" ]; then
   cp -L "$config_root/starship.toml" "$backup_dir/starship.toml"
 fi
+if [ -d "$config_root/micro/colorschemes" ]; then
+  cp -RL "$config_root/micro/colorschemes" "$backup_dir/micro-colorschemes"
+fi
 echo "Backup: $backup_dir"
 
 # Overlay only managed files; preserve local.fish, history, and universal variables.
@@ -45,6 +48,12 @@ done < <(find "$repo_dir/fish" -type f -print0)
 rm -f "$fish_dir/fish_plugins" "$config_root/starship.toml"
 cp "$backup_dir/merged-plugins" "$fish_dir/fish_plugins"
 cp "$repo_dir/starship.toml" "$config_root/starship.toml"
+mkdir -p "$config_root/micro/colorschemes"
+for file in "$repo_dir"/micro/colorschemes/*.micro; do
+  target="$config_root/micro/colorschemes/$(basename "$file")"
+  rm -f "$target"
+  cp "$file" "$target"
+done
 
 if ! "$skip_plugins"; then
   bootstrap=$(mktemp)

@@ -38,6 +38,10 @@ Fish as your terminal's shell. The installer doesn't change the login shell.
 
 - Personal greeting, title, aliases, and helpers from `config.fish`.
 - `cw`: open the first VS Code workspace in the current directory.
+- `micro`: select Bubblegum RGB in macOS light mode and Monokai in dark mode
+  at launch. The bundled RGB theme avoids Rex rendering Bubblegum's indexed
+  white background as dark. The installer backs up existing Micro color schemes
+  and installs the theme into `~/.config/micro/colorschemes` (or `$XDG_CONFIG_HOME`).
 - `gca`: stage and commit changes using Worktrunk's configured message generator.
 - `wtc`: create a Worktrunk worktree with a random two-word name, or a supplied name.
 - Worktrunk shell integration and `wt` / `nr` completions.
