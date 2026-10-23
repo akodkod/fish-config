@@ -38,6 +38,7 @@ Fish as your terminal's shell. The installer doesn't change the login shell.
 
 - Personal greeting, title, aliases, and helpers from `config.fish`.
 - `cw`: open the first VS Code workspace in the current directory.
+- `gca`: stage and commit changes using Worktrunk's configured message generator.
 - `wtc`: create a Worktrunk worktree with a random two-word name, or a supplied name.
 - Worktrunk shell integration and `wt` / `nr` completions.
 - Git abbreviations, autopair, fzf bindings, Ruby Bundler integration, and
@@ -49,7 +50,15 @@ wtc                      # Random name such as apple-cider
 wtc feature-name         # Explicit name
 wtc --base=@             # Random name from current HEAD
 cw                       # Open this directory's .code-workspace
+gca                      # Stage all changes and generate a commit message
+gca --dry-run            # Preview the message without committing
+gca --stage=none         # Commit only staged changes
 ```
+
+`gca` forwards arguments to `wt step commit`. To generate messages with Codex,
+configure `[commit.generation]` in `~/.config/worktrunk/config.toml` using the
+[Worktrunk Codex setup guide](https://worktrunk.dev/llm-commits/#codex).
+Without a configured generator, Worktrunk uses a message based on file names.
 
 ## Machine-specific setup
 
